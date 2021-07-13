@@ -52,10 +52,10 @@ Or
 
 - Home Page![home](Demonstration-Pictures/Home.png)
 - Successful Login
-  ![login-successful](Demonstration-Pictures\Success-login.png)
+  ![login-successful](Demonstration-Pictures/Success-login.png)
 - Dashboard
-  ![Dashboard](Demonstration-Pictures\Dashboard.png)
+  ![Dashboard](Demonstration-Pictures/Dashboard.png)
 - Meet
-  ![Meet](Demonstration-Pictures\Meet.png)
+  ![Meet](Demonstration-Pictures/Meet.png)
 - Chat
-  ![Chat](Demonstration-Pictures\Chat.png)
+  ![Chat](Demonstration-Pictures/Chat.png)
