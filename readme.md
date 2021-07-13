@@ -50,7 +50,7 @@ Or
 
 # Snapshots of App 📸
 
-- Home Page![home](Demonstration-Pictures\Home.png)
+- Home Page![home](Demonstration-Pictures/Home.png)
 - Successful Login
   ![login-successful](Demonstration-Pictures\Success-login.png)
 - Dashboard
