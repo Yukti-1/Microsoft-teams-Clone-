@@ -44,6 +44,7 @@ Or
 
 - Clone this repo 👩‍💻
 - Open project file in terminal. 💻
+- Run ```npm init```
 - Run locally using - `nodemon server.js`
 - Do star this repo and/or contribute if you like it.🙂
 
