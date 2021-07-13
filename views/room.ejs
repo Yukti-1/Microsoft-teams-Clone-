@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Emoji Support in Chat-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"
+      integrity="sha512-vEia6TQGr3FqC6h55/NdU3QSM5XR6HSl5fW71QTKrgeER98LIMGwymBVM867C1XHIkYD9nMTfWK2A0xcodKHNA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Microsoft Teams Clone</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.3.1/peerjs.min.js.map"></script>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const ROOM_ID = "<%= roomId %>";
+    </script>
+    <style>
+      #video-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      video {
+        height: 400px;
+        width: 400px;
+        object-fit: cover;
+        padding: 8px;
+      }
+    </style>
+    <img
+      class="logo"
+      src="https://statics.teams.microsoft.com/hashedassets-launcher/v2/logo_teams.6b4e1ac088270d6bc887d2ae9bcbb04c.svg"
+      aria-hidden="true"
+    />
+    <div class="timer">
+      <span style="position: relative; top: 25%; left: 15%; right: 15%"
+        ><label id="minutes">00</label>:<label id="seconds">00</label></span
+      >
+    </div>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main__left">
+        <div class="main__videos">
+          <div id="video-grid"></div>
+        </div>
+        <div class="main__controls">
+          <div class="main__controls_block">
+            <div
+              class="main__controls_button"
+              id="muteButton"
+              onclick="muteUnmute()"
+            >
+              <i class="fas fa-microphone"></i>
+              <span>Mute</span>
+            </div>
+            <div
+              class="main__controls_button"
+              id="playPauseVideo"
+              onclick="playStop()"
+            >
+              <i class="fas fa-video"></i>
+              <span>Stop Video</span>
+            </div>
+          </div>
+
+          <div class="main__controls_block">
+            <div class="main__controls_button" id="showParticipants">
+              <i class="fas fa-user-friends"></i>
+              <span>Participants</span>
+            </div>
+            <div id="showChat" class="main__controls_button">
+              <i class="fas fa-comment-alt"></i>
+              <span>Chat</span>
+            </div>
+
+            <div
+              id="share-button"
+              class="main__controls_button"
+              onclick="shareScreen()"
+              data-toggle="tooltip"
+              data-placement="top"
+            >
+              <i
+                class="fas fa-desktop"
+                title="screenShare"
+                aria-hidden="true"
+              ></i
+              ><span class="sr-only">Share Screen</span>
+              <span>Share Screen</span>
+            </div>
+
+            <div class="main__controls_button" id="inviteButton">
+              <i class="fas fa-user-plus"></i>
+              <span>Invite</span>
+            </div>
+          </div>
+
+          <div class="main__controls_block">
+            <div
+              class="main__controls_button leaveMeeting"
+              id="leave-meeting"
+              onclick="leaveMeet()"
+            >
+              <i class="fas fa-phone"></i>
+              <span class="leave_meeting">Hang Up</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main__right" id="main_right_window">
+        <div class="main__header">
+          CHAT
+
+          <button class="close-button" id="chat-toggle">&times;</button>
+        </div>
+        <div class="main__chat__window" id="main__chat__window">
+          <div class="messages"></div>
+        </div>
+        <div class="main__message_container">
+          <input
+            name="chat"
+            id="chat_message"
+            placeholder="Type message here..."
+          />
+          <!-------------------------------------------------------------------------------------->
+          <div id="send" class="options__button">
+            <i class="fas fa-send" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-------- Active Users------------------------------------------------------------------------------>
+
+      <div class="inbox__people">
+        <div class="main__header">
+          <h2>Participants</h2>
+
+          <button class="close-button" id="users-toggle">&times;</button>
+        </div>
+      </div>
+
+      <!-------------------------------------------------------------------------------------->
+    </div>
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"
+      integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="text/javascript">
+      $("#chat_message").emojioneArea({
+        pickerPosition: "top",
+        search: true,
+      });
+    </script>
+    <script>
+      $(document).ready((e) => {
+        $("#showChat").click((e) => {
+          $("#main_right_window").toggle();
+        });
+
+        $("#showParticipants").click((e) => {
+          $(".inbox__people").toggle();
+        });
+
+        $("#chat-toggle").click((e) => {
+          $("#main_right_window").toggle();
+        });
+      });
+
+      $(document).ready((e) => {
+        $(".inbox__people").hide();
+        $("#users-toggle").click((e) => {
+          $(".inbox__people").toggle();
+        });
+      });
+    </script>
+    <!--------------------------------------------------------------------------------------->
+
+    <!--------------------------------------------------------------------------------------->
+  </body>
+</html>

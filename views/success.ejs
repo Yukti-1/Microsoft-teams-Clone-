@@ -1,0 +1,85 @@
+<!-- views/success.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google SignIn</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <!-- load bootstrap css -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- load fontawesome -->
+    <style>
+      .button {
+        position: absolute;
+        bottom: 30%;
+        left: 40%;
+        border-radius: 8px;
+        background: #f4511e;
+        border: none;
+        color: #ffffff;
+        text-align: center;
+        text-emphasis: none;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+      }
+      .button span:after {
+        content: "\00bb";
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      .button:hover span {
+        padding-right: 25px;
+      }
+      .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      .button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+      body {
+        padding-top: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="text-primary text-center">
+          <span class="fa fa-user"></span> Profile Information
+        </h1>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="well">
+              <p>
+                <strong>Id</strong>: <%= user.id %><br />
+                <strong>Email</strong>: <%= user.emails[0].value %><br />
+                <strong>Name</strong>: <%= user.displayName %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="/dashbrd">
+      <button class="button">
+        <span>Go to Dashboard</span>
+      </button>
+    </a>
+  </body>
+</html>

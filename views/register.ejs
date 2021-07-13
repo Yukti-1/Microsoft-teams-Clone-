@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Form</title>
+    <style>
+      #mylink {
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body align="center">
+    <header>
+      <h1>Register</h1>
+    </header>
+
+    <form action="/register" method="POST">
+      <fieldset>
+        <label>Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="maverick"
+          required
+        />
+        <br /><br />
+
+        <label>Email ID</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="abc@example.com"
+          required
+        />
+        <br /><br />
+
+        <label>Password</label>
+        <input type="password" id="password" name="password" required />
+        <br /><br />
+
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </fieldset>
+    </form>
+    <br /><br />
+    <a id="mylink" href="/">Login</a>
+  </body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+    <style>
+      h2 {
+        font-weight: normal;
+        font-size: large;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      .navigation {
+        position: fixed;
+        width: 300px;
+        height: 100%;
+        background-color: #380463;
+        transition: 0.5s;
+        overflow: hidden;
+      }
+      .navigation.active {
+        width: 100px;
+      }
+
+      .navigation ul li {
+        position: relative;
+        width: 100%;
+        list-style: none;
+      }
+      .navigation ul li:hover {
+        background: #6264a7;
+        cursor: pointer;
+        border-radius: 60px;
+      }
+      .navigation ul li:nth-child(1):hover {
+        background: transparent;
+      }
+      .navigation ul li:nth-child(1) {
+        margin-bottom: 20px;
+      }
+      .navigation ul li a {
+        position: relative;
+        display: block;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: #fff;
+      }
+      .navigation ul li a .icon {
+        position: relative;
+        display: block;
+        min-width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        left: 0%;
+      }
+      .navigation ul li a .icon .fas {
+        color: #fff;
+        font-size: 24px;
+      }
+      .navigation ul li a .icon .title {
+        position: relative;
+        display: block;
+        padding: 0 10px;
+        height: 60px;
+        line-height: 60px;
+        white-space: nowrap;
+      }
+
+      .main.active {
+        width: calc(100%-60px);
+        left: 100px;
+      }
+      .main {
+        position: absolute;
+        width: calc(100% - 300px);
+        left: 300px;
+        min-height: 100vh;
+        background: #f5f5f5;
+        transition: 0.5s;
+      }
+      .main .topbar {
+        width: 100%;
+        background: #fff;
+        height: 60px;
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .toggle {
+        position: relative;
+        width: 60px;
+        height: 60px;
+
+        cursor: pointer;
+      }
+
+      .toggle::before {
+        content: "\f0c9";
+        font-family: fontAwesome;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        line-height: 60px;
+        font-size: 24px;
+        text-align: center;
+        color: #111;
+      }
+      .search {
+        position: relative;
+        width: 400px;
+        margin: 0 10px;
+      }
+
+      .search label {
+        position: relative;
+        width: 100%;
+      }
+
+      .search label input {
+        width: 100%;
+        height: 40px;
+        border-radius: 40px;
+        padding: 5px 20px;
+        padding-left: 35px;
+        outline: none;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+
+      .search label .fas {
+        position: absolute;
+        left: 15px;
+        top: 4px;
+      }
+
+      .user {
+        position: relative;
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .user img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cardBox {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+      }
+
+      .cardBox .card {
+        position: relative;
+        background: rgb(245, 198, 198);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+
+        border-radius: 20px;
+      }
+
+      .iconBox {
+        position: relative;
+        display: inline-block;
+      }
+      .iconBox .hovertext {
+        border-radius: 60px;
+
+        font-family: "Raleway", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        bottom: 55px;
+        left: 47px;
+        line-height: 38px;
+        overflow: hidden;
+
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 0;
+
+        /* CSS3 Transition: */
+        -webkit-transition: 0.5s;
+        /* Future proofing (these do not work yet): */
+        -moz-transition: 0.5s;
+        transition: 0.5s;
+      }
+
+      .iconBox:hover .hovertext {
+        width: auto;
+        padding: 0 30px;
+        overflow: visible;
+
+        border-width: medium;
+
+        border-color: #380463;
+      }
+
+      .iconBox .hovertext {
+        background-color: #d9daee;
+        color: #380463;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+  </head>
+  <body>
+    <div class="container" style="position: relative; width: 100%">
+      <div class="navigation">
+        <ul style="position: absolute; top: 0; left: 0; width: 100%">
+          <li>
+            <a href="#">
+              <span class="icon">
+                <img
+                  src="https://img.icons8.com/color/50/000000/microsoft-teams.png"
+                  style="background: white; border-radius: 30px"
+                />
+              </span>
+              <span class="title"><h2>Microsoft Teams</h2></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-home"></i></span>
+              <span class="title"><h2>Dashboard</h2></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-comment"></i></span>
+              <span class="title"><h2>Message</h2></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-question-circle"></i></span>
+              <span class="title"><h2>Help</h2></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-cog"></i></span>
+              <span class="title"><h2>Settings</h2></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon"><i class="fas fa-lock"></i></span>
+              <span class="title"><h2>Password</h2></span>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+              <span class="title"><h2>Sign out</h2></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle" onclick="toggleMenu();"></div>
+          <div class="search">
+            <label>
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <input type="text" placeholder="Search here..." name="" id="" />
+            </label>
+          </div>
+          Welcome User!!
+          <div class="user">
+            <i class="fas fa-user-alt"></i>
+          </div>
+        </div>
+
+        <div class="cardBox">
+          <div class="card">
+            <div>
+              <div
+                class="cardName"
+                style="
+                  color: #380463;
+                  font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                    'Trebuchet MS', sans-serif;
+                  font-weight: bold;
+                "
+              >
+                Meet Now
+              </div>
+            </div>
+            <img
+              src="https://bestanimations.com/media/right/571934695right-arrow-double-3.gif"
+              alt=""
+              style="width: 50px; height: auto"
+            />
+            <a href="/d">
+              <div class="iconBox">
+                <i
+                  id="newMeeting"
+                  style="font-size: 50px; color: #551a8b"
+                  class="fas fa-video"
+                  aria-hidden="true"
+                >
+                </i>
+                <span class="hovertext">Create New Meeting</span>
+              </div>
+            </a>
+          </div>
+
+          <!-------------------------------------------------------------------------------------->
+          <div class="card" style="margin-left: 30%">
+            <div>
+              <div
+                class="cardName"
+                style="
+                  color: #380463;
+                  font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                    'Trebuchet MS', sans-serif;
+                  font-weight: bold;
+                "
+              >
+                Join Meeting
+              </div>
+            </div>
+            <img
+              src="https://bestanimations.com/media/right/571934695right-arrow-double-3.gif"
+              alt=""
+              style="width: 50px; height: auto"
+            />
+
+            <div class="iconBox">
+              <span
+                class="iconify"
+                data-icon="mdi-video-plus"
+                data-inline="false"
+                style="font-size: 65px; color: #551a8b"
+              ></span>
+
+              <span class="hovertext">Join Meeting</span>
+            </div>
+          </div>
+          <div class="card" style="margin-left: 35%">
+            <div>
+              <div
+                class="cardName"
+                style="
+                  color: #380463;
+                  font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                    'Trebuchet MS', sans-serif;
+                  font-weight: bold;
+                "
+              >
+                Chat
+              </div>
+            </div>
+            <img
+              src="https://bestanimations.com/media/right/571934695right-arrow-double-3.gif"
+              alt=""
+              style="width: 50px; height: auto"
+            />
+
+            <div class="iconBox">
+              <i
+                id="chatFeature"
+                style="font-size: 50px; color: #551a8b"
+                class="fas fa-comment-dots"
+                aria-hidden="true"
+              >
+              </i>
+              <span class="hovertext">Start/Continue Chat</span>
+            </div>
+          </div>
+
+          <!-------------------------------------------------------------------------------------->
+        </div>
+
+        <div
+          id="data-join-meeting"
+          style="
+            display: none;
+            position: fixed;
+            height: 100px;
+            width: 300px;
+            padding-top: 100px;
+            margin-left: 26rem;
+            border: 10px solid rgb(54, 158, 161);
+            border-color: rgb(54, 158, 161);
+
+            transition: 0.5s ease-in-out;
+            border-width: medium;
+            background: rgb(251, 253, 253);
+
+            border-radius: 20px;
+          "
+        >
+          <input
+            style="position: absolute; left: 20%; top: 35%; padding: 1rem"
+            type="url"
+            id="url"
+            placeholder="Enter meeting URL...."
+          />
+          <button
+            class="close-button"
+            style="
+              position: absolute;
+              top: 8px;
+              right: 3px;
+              font-size: 24px;
+              font-weight: bold;
+
+              background: white;
+              cursor: pointer;
+              border: none;
+            "
+          >
+            &times;
+          </button>
+          <button
+            type="button"
+            class="btn"
+            style="
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              position: absolute;
+              left: 40%;
+              top: 70%;
+              display: flex;
+              font: bold;
+              font-size: 24px;
+              cursor: pointer;
+              background: rgb(25, 181, 243);
+              color: white;
+              border: none;
+              border-radius: 20px;
+            "
+          >
+            Join
+          </button>
+        </div>
+        <img style="float: right" src="/hero.png" alt="" aria-hidden="true" />
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        let toggle = document.querySelector(".toggle");
+        let navigation = document.querySelector(".navigation");
+        let main = document.querySelector(".main");
+        toggle.classList.toggle("active");
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready((e) => {
+        $(".iconify").click((e) => {
+          $("#data-join-meeting").toggle();
+        });
+        $(".close-button").click((e) => {
+          $("#data-join-meeting").toggle();
+        });
+
+        $("#chatFeature").click((e) => {
+          $("#data-join-meeting").toggle();
+        });
+      });
+      $(document).ready((e) => {
+        $(".btn").click((e) => {
+          var url = $("#url").val();
+          window.open(url);
+        });
+      });
+    </script>
+  </body>
+</html>

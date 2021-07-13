@@ -1,0 +1,100 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta
+      name="google-signin-client_id"
+      content="59350927246-ckbopa25jkrum2aq8tru6el202id25sp.apps.googleusercontent.com"
+    />
+  </head>
+
+  <body>
+    <div class="teams-wrapper">
+      <h3>Welcome to Microsoft Teams</h3>
+      <div class="teams-container">
+        <div class="signin-logo">
+          <img
+            src="https://statics.teams.microsoft.com/hashedassets-launcher/v2/logo_teams.6b4e1ac088270d6bc887d2ae9bcbb04c.svg"
+            alt=""
+            width="300px"
+          />
+        </div>
+
+        <div class="signin-title">
+          <h3>Enter your work, school, or Microsoft account.</h3>
+        </div>
+        <div class="signin-container">
+          <form>
+            <div class="signin-input">
+              <input
+                type="email"
+                id = "email"
+                name="email"
+                placeholder="Sign-in address"
+                required
+                id="userEmail"
+              />
+              <input
+                type="password"
+                id = "password" 
+                name="password"
+                placeholder="Enter Password"
+              />
+            </div>
+            <div class="btn">
+              <button
+                onClick="login(event)"
+                id="btn"
+                style="border-radius: 15px; padding: 2px"
+              >
+                Sign in
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="teams-details">
+        <p>
+          Not on Teams yet?
+          <!--  rel="noopener noreferrer" *for security purpose i.e. prevent tabnabbing*-->
+          <span id="learnmore"
+            ><a
+              href="https://www.microsoft.com/en-in/microsoft-teams/group-chat-software/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Learn More</a
+            ></span
+          >
+        </p>
+      </div>
+    <a href="/register"><button class="btn-signup">Sign up for free</button></a>
+    </div>
+  
+  
+    <div
+      class="text-center text-primary"
+      style="position: absolute; top: 50%; right: 10%"
+    >
+      <p><h2>Or</h2> Login/Register with:</p>
+      <a href="/auth/google" class="btn btn-danger"
+        ><span class="fa fa-google"></span> SignIn with Google</a
+      >
+    </div>
+
+  
+    <script src="home.js"></script>
+
+  </body>
+</html>
