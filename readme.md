@@ -58,4 +58,4 @@ Or
 - Meet
   ![Meet](Demonstration-Pictures/Meet.png)
 - Chat
-  ![Chat](Demonstration-Pictures/Chat.png)
+  ![Chat](Demonstration-Pictures/chat.png)
